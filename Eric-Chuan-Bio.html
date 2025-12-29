@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Chuan - Bio & Contact</title>
+    <meta name="description" content="Biography, experience, and contact information for Eric Chuan, Creative Director with 20+ years in brand and digital design.">
+    <meta property="og:title" content="Eric Chuan - Bio">
+    <meta property="og:description" content="Biography and contact information for Eric Chuan, Creative Director.">
+    <!-- <meta property="og:image" content="URL_TO_IMAGE"> -->
+    <meta property="og:url" content="https://your-netlify-url.netlify.app">
+    <link rel="shortcut icon" href="assets/favicon/Eric-Chuan-48epx.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/Eric-Chuan-720epx.png">
+    <!-- Your existing CSS links and other tags follow below -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #fff; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* ===== FULL BACKGROUND VIDEO ===== */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.17; /* 30% opacity */
+            pointer-events: none;
+        }
+        
+        /* ===== ANIMATION CONTAINER - PERFECT ALIGNMENT ===== */
+        #container {
+            position: fixed;
+            top: 0;
+            left: 100vw;
+            width: 100vw;
+            animation: travel 3.5s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+            z-index: 10001;
+        }
+        
+        #bar {
+            width: 100%;
+            height: 35px;
+            background: #000;
+            clip-path: inset(0 10px 0 0);
+        }
+        
+        #name {
+            position: absolute;
+            top: 75px;
+            right: 0;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 10px;
+            white-space: nowrap;
+            line-height: 1;
+            color: #000;
+            z-index: 10002;
+            background: #fff;
+            padding-right: 1px;
+            /* PERFECT ALIGNMENT: bar ends exactly at name start */
+        }
+        
+        /* PERFECT ALIGNMENT: Bar stops exactly where name starts */
+        @keyframes travel {
+            0% { left: 100vw; width: 100vw; }
+            40% { left: 80px; width: 100vw; }
+            100% { left: 80px; width: var(--name-width); } /* EXACT width of name */
+        }
+        
+        /* ===== BIO ICON SPIN - MATCHES INDEX PAGE ===== */
+        .bio-spin-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85px;
+            height: 100px;
+            z-index: 10003;
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInOut 3.5s cubic-bezier(0.2, 0, 0.1, 1) forwards;
+        }
+        
+        .bio-spin-icon {
+            width: 42.5px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            right: 5px; /* Bio icon position in nav */
+            background-image: url('assets/nav/bio.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: windmillSpin 2s linear forwards;
+            transform-origin: center center; /* Spin from center like windmill */
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 1; }
+            2%{ opacity: 1; }
+            10% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        /* WINDMILL SPIN - Anti-clockwise from center */
+@keyframes windmillSpin {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+        filter: brightness(1);
+        background-color: #000 !important;
+    }
+    40% {
+        transform: rotate(-360deg); /* First full spin */
+        opacity: 1;
+        filter: brightness(1);
+    }
+    65% {
+        transform: rotate(-540deg); /* 1.5 spins total */
+        opacity: 1;
+        filter: brightness(0.5);
+        background-image: none;
+        background-color: #000;
+    }
+    66% {
+        opacity: 0; /* Instant disappear */
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(-540deg);
+        filter: brightness(0);
+    }
+}
+        
+        /* ===== BIO CONTENT - ORIGINAL GOOD LAYOUT ===== */
+        .bio-content {
+            max-width: none;
+            margin: 100px 0 0 80px;
+            padding: 0 80px 180px 0;
+            width: calc(100% - 80px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease 4s, transform 1.5s ease 4s;
+            z-index: 10000;
+            position: relative;
+            background: transparent;
+        }
+        
+        .bio-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Four-column grid - Original spacing */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px; /* Original gap */            
+        }
+        
+        /* Column containers - Original heights */
+        .column-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 1.6em; /* Adds space between child elements */            
+        }
+        
+        .column-1 {
+            padding-top: 230px;
+            height: 220px;
+        }
+        
+        .column-2 {
+            
+            padding-top: 60px;
+            height: 500px;
+        }
+        
+        .column-3 {
+            padding-top: 500px;
+            height: 550px;
+        }
+        
+        /* Text content */
+        .bio-column {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+            text-align: justify;
+            width: 100%;  
+        }
+         /* Text content */
+.bio-column {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    width: 100%;  
+}
+
+/* ===== PARAGRAPH SPACING ===== */
+.bio-column p {
+    margin-bottom: 1.1em; /* Space between paragraphs */
+}
+
+.bio-column p:last-child {
+    margin-bottom: 0; /* No space after last paragraph */
+}   
+        
+        
+       /* ===== DROP CAP - POSITION FIX ===== */
+.drop-cap-img {
+    width: 102px;
+    height: 120px;
+    display: block;
+    float: left;
+    object-fit: contain;
+    shape-outside: inset(0);
+    margin: -20px 15px 0 0px; /* Increased right margin for "y" spacing */
+    vertical-align: top;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hide the actual text "M" */
+.column-1 .bio-column p:first-child::first-letter {
+    visibility: hidden;
+    font-size: 0;
+    display: inline-block;
+    width: 0;
+}
+
+.column-1 .bio-column p:first-child {
+    margin-top: 0;
+    overflow: visible;
+    position: relative;
+    text-indent: 0; /* Ensure no text indent */
+}
+
+/* Clear the float */
+.column-1 .bio-column p:first-child::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+ /* ===== STICKY EMAIL FORM ===== */
+.sticky-email-form {
+    position: fixed;
+    top: 102px; /* 100px nav height + 2px gap */
+    right: 0;
+    width: 187px;
+    height: 60px;
+    z-index: 10006;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease 4s, visibility 0s 4s; /* Original 4s delay */
+}
+
+.sticky-email-form.visible {
+    opacity: 0.3; /* 30% visible */
+    visibility: visible;
+    transition-delay: 0s; /* Remove delay when showing */
+}
+
+.sticky-email-form.visible:hover,
+.email-form-box:hover {
+    opacity: 1; /* 100% on hover */
+}
+.email-form-box {
+    width: 187px;
+    height: 72px;
+    border: 1px solid #999;
+    padding: 6px;
+    background: rgba(190, 190, 205, 0.9); /* Blue-gray tint */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.email-form-box .top-text {
+    font-size: 7.7px;
+    color: #000; /* black text */
+    margin-bottom: 2.6px;
+}
+
+.email-form-box .input-row {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 4.5px;
+}
+
+.email-form-box input {
+    width: 120px;
+    height: 30px;
+    background: black;
+    color: white;
+    border: none;
+    padding: 0 6.5px;
+    font-size: 10px;
+}
+
+.email-form-box input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.email-form-box button {
+    width: 53px;
+    height: 30px;
+    background: #ff0;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.email-form-box button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.email-form-box .bottom-text {
+    font-size: 9px;
+    color: #555; /* text */
+    font-style: normal;
+    margin-top: 1.02px; /* Add this to push it away from border */
+}       
+        /* ===== EMAIL FORM THANK YOU MESSAGE ===== */
+.thank-you-message {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.thank-you-message.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-10px);
+    background: black !important;
+    padding: 1px;
+    margin: -1px; /* Negative margin to counteract parent padding */
+    width: calc(100% + 12px); /* Extend width to fill */
+    height: calc(100% + 12px); /* Extend height to fill */
+}
+
+.thank-you-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 160px;
+    margin: 0 auto;
+    transform: translateX(-11.5px); /* Move left 10px */
+}
+
+.text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0; /* Prevent text overflow */
+}
+
+.thank-you-message h3 {
+    font-size: 15.5px;
+    margin-bottom: 6px; /* Reduced margin */
+   color: white !important; /* Change to white */
+    font-weight: normal;
+    text-align: left;
+    line-height: 0.9;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.download-text {
+    font-size: 12px;
+    color: #016fa2 !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: left;
+    line-height: 1.0;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.download-text:hover {
+    color: #ae00a8 !important;
+}
+
+.pdf-link {
+    display: inline-block;
+    width: 38px;
+    height: 45px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.pdf-link:hover {
+    transform: scale(1.05);
+}
+
+.pdf-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+        /* ===== CREDIT LINE ===== */
+        .credit-line {
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            font-size: 8.5px;
+            color: #777878;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            z-index: 10006;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-orientation: mixed;
+            line-height: 1.2;
+            
+        }
+        
+        .credit-line a {
+            color: #016fa2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .credit-line a:hover {
+            color: #ae00a8;
+        }
+
+        /* ===== STICKY CMYK NAVIGATION ===== */
+        .cmyk-nav { 
+            position: fixed; 
+            z-index: 10005;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .cmyk-nav.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .cmyk-nav.desktop {
+            width: 85px;
+            height: 100px;
+            top: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+        }
+        
+        .cmyk-nav.desktop .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cmyk-nav.desktop .nav-item {
+            width: 42.5px;
+            height: 50px;
+            transition: transform 0.8s cubic-bezier(0.2, 0, 0.1, 1), 
+                        opacity 0.8s cubic-bezier(0.2, 0, 0.1, 1);
+        }
+        
+        /* NAV HOVER ANIMATION */
+        .cmyk-nav.desktop:hover .nav-item:not(:hover) {
+            transform: scale(0.9);
+            opacity: 0.5;
+            transition: transform 0.8s cubic-bezier(0.2, 0, 0.1, 1), 
+                        opacity 0.8s cubic-bezier(0.2, 0, 0.1, 1);
+        }
+
+        .cmyk-nav.desktop .nav-item:hover {
+            transform: scale(1);
+            opacity: 1;
+            z-index: 2;
+            transition: transform 0.5s cubic-bezier(0.2, 0, 0.1, 1), 
+                        opacity 0.5s cubic-bezier(0.2, 0, 0.1, 1);
+        }
+
+        /* Transform origins */
+        .cmyk-nav.desktop .nav-item:nth-child(1) { transform-origin: 85px 100px; }
+        .cmyk-nav.desktop .nav-item:nth-child(2) { transform-origin: 0px 100px; }
+        .cmyk-nav.desktop .nav-item:nth-child(3) { transform-origin: 85px 0px; }
+        .cmyk-nav.desktop .nav-item:nth-child(4) { transform-origin: 0px 0px; }
+        
+
+        
+        /* Mobile - no animation */
+        .cmyk-nav.mobile .nav-item { 
+            transform: scale(1) !important; 
+            opacity: 1 !important; 
+        }
+        
+        .cmyk-nav.mobile {
+            width: 35px;
+            height: auto;
+            top: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+        }
+        
+        .cmyk-nav.mobile .nav-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0 !important;
+        }
+        
+        .cmyk-nav.mobile .nav-item {
+            width: 35px;
+            height: 35px;
+        }
+        
+        /* NAV ITEMS */
+        .nav-item {
+            display: block;
+            cursor: pointer;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        /* CMYK Icons */
+        .nav-item.folio { background-image: url('assets/nav/folio.png'); }
+        .nav-item.bio { background-image: url('assets/nav/bio.png'); }
+        .nav-item.linkedin { background-image: url('assets/nav/linkedin.png'); }
+        .nav-item.email { background-image: url('assets/nav/email.png'); }
+        
+            /* ===== QR CODE ===== */
+        .qr-code {
+            position: fixed;
+            top: 0;
+            right: 87px; /* 85px nav + 2px gap */
+            width: 100px;
+            height: 100px;
+            z-index: 10007;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease 3s, visibility 0s 3s; /* 3 second delay */
+            background: url('assets/drop/Eric-Chuan-QR.svg') center/contain no-repeat;
+            pointer-events: auto;
+        }
+
+        .qr-code.visible {
+            opacity: 0.3;
+            visibility: visible;
+            transition: opacity 0.5s ease, transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+        }
+
+        .qr-code.visible:hover {
+            opacity: 1 !important;
+            transform: translate(-102px, 102px) scale(2.54); 
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            /* Keep same SVG, just enlarged */
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .column-wrapper {
+                height: auto;
+                padding-top: 0 !important;
+                max-width: 100% !important;
+            }
+            
+            .bio-content {
+        padding: 0 40px 50px 25px;
+        margin: 200px 0 0 0px; /* Changed from 350px top to 100px top, 20px left */
+        width: calc(100% - 20px); /* Adjust width calculation */
+    }
+            
+            #name {
+                font-size: 25px;
+                padding-right: 5px;
+            }
+            
+            @keyframes travel {
+                0% { left: 100vw; width: 100vw; }
+                40% { left: 20px; width: 100vw; }
+                100% { left: 20px; width: var(--name-width); }
+            }
+            
+            /* Bio spin overlay for mobile */
+            .bio-spin-overlay {
+                width: 35px;
+                height: 240px;
+            }
+            
+            .bio-spin-icon {
+                width: 35px;
+                height: 35px;
+                right: 0;
+                top: 35; /* Bio is 2nd in mobile stack */
+            }
+            
+       
+          
+            
+            
+            
+            .drop-cap-img {
+    width: 85px;
+    height: 100px;
+    margin: -15px 12px 0 0px; /* Adjust right margin for mobile */
+}
+   
+.column-1 .bio-column p:first-child {
+    padding-top: 0;
+}
+
+/* Ensure text flows properly in mobile */
+.column-1 .bio-column p:first-child span {
+    display: inline;
+}
+            
+            
+ 
+    .sticky-email-form {
+        position: fixed;
+        bottom: 0;
+        left: 25px;
+        top: auto !important; /* Override desktop top position */
+        right: auto !important; /* Override desktop right position */
+        width: 200px;
+        height: 72px;
+    }
+    
+    /* Mobile-specific QR code positioning and behavior */
+@media (max-width: 768px) {
+    .qr-code {
+        position: fixed;
+        bottom: 0;
+        left: 220px; /* 25px (form left) + 200px (form width) + 2px gap */
+        top: auto !important;
+        right: auto !important;
+        width: 72px !important;
+        height: 72px !important;
+        opacity: 0.9;
+        transition: opacity 0.9s ease, transform 0.5s ease;
+        z-index: 10007;
+    }
+    
+    /* QR code enlargement - goes above on click (toggle) */
+    .qr-code.enlarged {
+        transform: translateY(-100%) scale(2) !important;
+        opacity: 1 !important;
+        width: 100vw !important;
+        height: 100vw !important;
+        max-width: 400px;
+        max-height: 400px;
+        left: 50% !important;
+        transform: translateX(-50%) translateY(-20%) !important;
+        bottom: 10px !important;
+    }
+    
+    /* Change from hover to click for mobile */
+    .qr-code.visible:hover {
+        transform: none !important;
+        opacity: 0.3 !important;
+    }
+}
+
+                         /* Navigation visibility */
+              .cmyk-nav.desktop { display: none; }
+              .cmyk-nav.mobile { display: block; }
+              
+             
+          } /* This closes @media (max-width: 768px) */
+          
+          @media (min-width: 769px) {
+              .cmyk-nav.desktop { display: block; }
+              .cmyk-nav.mobile { display: none; }
+          }
+
+    </style>
+        <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Eric Chuan",
+    "url": "https://ericchuan.com",
+    "description": "Eric Chuan - Creative Specialist with 20+ years experience working with Fortune 500 companies including American Express, Lacoste, and Morgan Stanley.",
+    "image": "https://ericchuan.com/assets/eric-chuan-profile.jpg",
+    "sameAs": [
+        "https://linkedin.com/in/ericchuan",
+        "https://instagram.com/ericchuandesign"
+    ],
+    "jobTitle": "Creative Design & Direction",
+    "worksFor": {
+        "@type": "Organization",
+        "name": "Eric Chuan Design"
+    }
+}
+</script>
+</head>
+<body>
+    <!-- Background Video - Full Screen 30% opacity -->
+    <video class="background-video" autoplay muted loop playsinline>
+        <source src="assets/drop/Eric-Chuan-Design-colors.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Bio Spin Overlay - Windmill spin from center -->
+    <div class="bio-spin-overlay">
+        <div class="bio-spin-icon"></div>
+    </div>
+    
+    <!-- Animation Container - PERFECT eyebrow alignment -->
+    <div id="container">
+        <div id="bar"></div>
+        <div id="name"> ERIC CHUAN</div>
+    </div>
+    
+    <!-- CMYK Navigation (Desktop) -->
+    <div class="cmyk-nav desktop">
+        <nav class="nav-grid">
+            <a href="index.html" class="nav-item folio" title="Folio"></a>
+            <a href="Eric-Chuan-Bio.html" class="nav-item bio" title="Bio/CV"></a>
+            <a href="https://linkedin.com/in/ericchuan" target="_blank" class="nav-item linkedin" title="LinkedIn"></a>
+            <a href="mailto:1747242eric@gmail.com" class="nav-item email" title="Email"></a>
+        </nav>
+    </div>
+        <!-- QR Code -->
+        <div class="qr-code"></div>
+    <!-- CMYK Navigation (Mobile) -->
+    <div class="cmyk-nav mobile">
+        <nav class="nav-grid">
+            <a href="index.html" class="nav-item folio" title="Folio"></a>
+            <a href="Eric-Chuan-Bio.html" class="nav-item bio" title="Bio/CV"></a>
+            <a href="https://linkedin.com/in/ericchuan" target="_blank" class="nav-item linkedin" title="LinkedIn"></a>
+            <a href="mailto:1747242eric@gmail.com" class="nav-item email" title="Email"></a>
+        </nav>
+    </div>
+    
+    <!-- Credit Line -->
+    <div class="credit-line">
+     co-developed by <a href="https://chat.deepseek.com" target="_blank">DeepSeek Nexus</a>
+    </div>
+         <!-- Sticky Email Form -->
+<div class="sticky-email-form" id="stickyForm">
+    <div class="email-form-box" id="emailFormBox">
+        <div class="top-text">No spam, we hate it more than you do</div>
+        <form id="emailForm">
+            <div class="input-row">
+                <input type="email" id="emailInput" placeholder="Your email address" required>
+                <button type="submit" id="submitButton">
+                    <img src="assets/drop/Eric-Chuan-Send.png" alt="Send" id="submitImage">
+                </button>
+            </div>
+            </form>
+        <div class="bottom-text">Eric's downloadable CV PDF will follow</div>
+        
+                <!-- Thank You Message (hidden initially) -->
+        <div class="thank-you-message" id="thankYouMessage">
+            <div class="thank-you-content">
+                <div class="text-block">
+                    <h3>Thank You!</h3>
+                    <a href="assets/drop/Eric-Chuan-cv.pdf" target="_blank" class="download-text">
+                        Download >>
+                    </a>
+                </div>
+                <a href="assets/drop/Eric-Chuan-cv.pdf" target="_blank" class="pdf-link" id="pdfLink">
+                    <img src="assets/drop/Eric-Chuan-pdf.png" alt="Download CV" id="pdfImage">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Audio element for thank you sound -->
+<audio id="thankYouSound" preload="auto">
+    <source src="assets/drop/Eric-Chuan-Thanks.mp3" type="audio/mpeg">
+</audio>
+        
+
+    <!-- Bio Content - ORIGINAL GOOD LAYOUT -->
+    <div class="bio-content" id="bioContent">
+        <div class="bio-grid">
+            <!-- Column 1: Medium height - Personal Origin & Philosophy -->
+            <div class="column-wrapper column-1">
+                <div class="bio-column">
+                            <p>
+                <img src="assets/drop/M-cap.png" alt="Decorative drop cap M" class="drop-cap-img">
+                                <span>My earliest memories are etched in cedar shavings and scrap newsprint. At three years old, I sat before a metropolitan skyline, translating that concrete jungle into a private system of shapes and light. Time vanished in those moments; summer breaks blurred into long afternoons measured only by golden light fading into dusk. I didn’t have language for it then—I only knew the world felt right once it was organized on the page.</span>
+
+            <p>That skyline became my first system. The childhood urge to find harmony in noise never left; it simply but slowly flourish. It was never easy, nonetheless, cedar shavings found its way to brand architecture and design systems. The tools changed, but the heartbeat of the work remained the same: the disciplined act of turning chaos into clarity.</p>
+            </div>
+                </div>
+                        
+                        <!-- Column 2: Tallest - Career Evolution & Systems -->
+            <div class="column-wrapper column-2">
+                <div class="bio-column">
+                    <p>If one must call brand design “art,” it is not the solitary impulse of a Warhol whim. It is closer to archaeology—the practice of excavating through layers of voices, constraints, and intent to uncover a core truth hidden beneath the clutter. Design is not self-expression; it is synthesis.</p>
+                <p>This work demands restraint. It is the search for a near-perfect solution through visual communication, where clarity is earned through structure, hierarchy, and precision. The magic is quiet, disciplined, and intentional—less spectacle, more alignment.</p>
+                <p>Like many designers, I began believing I would become an “artist,” dreaming of Mondrian balance, Pollock freedom, and the ability to channel Monet through a Picasso instinct. I became a designer the moment I realized the deeper calling was not expression, but responsibility: releasing a long-brewed identity and restoring order where complexity overwhelms.</p>
+                <p>That realization arrives quietly. Chaos settles, systems emerge, and meaning takes shape. In that stillness, design does its real work—making sense of what was once noise.</p>
+                <p>The shift from paper to pixels arrived with the millennium dot-com boom. Colored-pencil logic evolved into interfaces, grids, and user flows. The medium changed, but the need for clarity did not. The 2008 financial crisis later reinforced a critical truth: design is not decoration—it is infrastructure.</P>
+                </div>   
+            </div>
+            
+            <!-- Column 3: Short - Professional Practice & Principles -->
+            <div class="column-wrapper column-3">
+                <div class="bio-column">
+                    <p>Surviving Lehman Brothers, moving to Morgan Stanley, then crossing into fashion and healthcare taught me that design is a universal language. In high-stakes environments, hierarchy is not an aesthetic choice; it is the syntax of trust. Clear systems prevent error, build confidence, and scale across industries.</p>
+                <p>
+Today, after two decades spanning finance, tech, and fashion, my practice still rests on those early principles: detail is non-negotiable, and the strongest solutions emerge from collective intelligence rather than individual ego.</p>
+<p>Whether building a dashboard or a brand, the goal remains the same—to make the complex feel inevitable. To connect business objectives with human experience so the work doesn’t merely look right, but feels essential. The same quiet magic from those early drawings remains at play—the color pencil fairy still at work, making the world make sense, one line, one system, one step at a time.</p>
+
+
+</div>
+        </div>
+        
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('container');
+        const name = document.getElementById('name');
+        const bioContent = document.getElementById('bioContent');
+        const navElements = document.querySelectorAll('.cmyk-nav');
+        const backgroundVideo = document.querySelector('.background-video');
+        
+        // PERFECT ALIGNMENT: Set name width exactly
+        const nameWidth = name.offsetWidth;
+        container.style.setProperty('--name-width', nameWidth + 'px');
+        
+        // Fade in bio content after animation
+        setTimeout(() => {
+            bioContent.classList.add('visible');
+        }, 1250);
+        
+        setTimeout(() => {
+            navElements.forEach(nav => nav.classList.add('visible'));
+        }, 12000);
+
+        // Video autoplay with click fallback
+        if (backgroundVideo) {
+            backgroundVideo.play().catch(e => {
+                console.log('Video autoplay blocked, will play on click');
+                document.addEventListener('click', function initVideo() {
+                    backgroundVideo.play();
+                    document.removeEventListener('click', initVideo);
+                }, { once: true });
+            });
+            
+            backgroundVideo.preload = 'auto';
+            backgroundVideo.load();
+        }
+
+        // Bio icon click - restart animation
+        const bioNavLinks = document.querySelectorAll('.nav-item.bio');
+        bioNavLinks.forEach(bioNavLink => {
+            bioNavLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Restart eyebrow animation
+                container.style.animation = 'none';
+                void container.offsetWidth;
+                container.style.animation = 'travel 3.5s cubic-bezier(0.2, 0, 0.1, 1) forwards';
+                
+                // Restart bio spin
+                const spinOverlay = document.querySelector('.bio-spin-overlay');
+                const spinIcon = document.querySelector('.bio-spin-icon');
+                
+                if (spinOverlay && spinIcon) {
+                    spinOverlay.style.animation = 'none';
+                    spinIcon.style.animation = 'none';
+                    void spinOverlay.offsetWidth;
+                    void spinIcon.offsetWidth;
+                    spinOverlay.style.animation = 'fadeInOut 3.5s cubic-bezier(0.2, 0, 0.1, 1) forwards';
+                    spinIcon.style.animation = 'windmillSpin 3.5s cubic-bezier(0.2, 0, 0.1, 1) forwards';
+                }
+                
+                // Hide content temporarily
+                bioContent.style.opacity = '0';
+                bioContent.classList.remove('visible');
+                
+                // Show again after animation
+                setTimeout(() => {
+                    bioContent.classList.add('visible');
+                }, 1000);
+            });
+        });
+
+        // EMAIL FORM FUNCTIONALITY
+        const emailForm = document.getElementById('emailForm');
+        const emailInput = document.getElementById('emailInput');
+        const submitButton = document.getElementById('submitButton');
+        const submitImage = document.getElementById('submitImage');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        const emailFormBox = document.getElementById('emailFormBox');
+        const thankYouSound = document.getElementById('thankYouSound');
+        const pdfLink = document.getElementById('pdfLink');
+        const pdfImage = document.getElementById('pdfImage');
+        const stickyForm = document.getElementById('stickyForm');
+        
+        // Image paths
+        const sendButtonImage = 'assets/drop/Eric-Chuan-Send.png';
+        const sentButtonImage = 'assets/drop/Eric-Chuan-Sent.png';
+        const pdfImageNormal = 'assets/drop/Eric-Chuan-pdf.png';
+        const pdfImageHover = 'assets/drop/Eric-Chuan-pdf-done.png';
+        
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        // Handle form submission
+        if (emailForm) {
+            emailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = emailInput.value.trim();
+                
+                // Validate email
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Change button to sent state
+                submitImage.src = sentButtonImage;
+                
+                // Play thank you sound
+                if (thankYouSound) {
+                    thankYouSound.play().catch(e => {
+                        console.log('Audio play prevented:', e);
+                    });
+                }
+                
+                // Fade out the form
+                emailFormBox.classList.add('fade-out');
+                
+                // After fade out, show thank you message
+                setTimeout(() => {
+                    // Hide form elements
+                    const topText = document.querySelector('.top-text');
+                    const inputRow = document.querySelector('.input-row');
+                    const bottomText = document.querySelector('.bottom-text');
+                    
+                    if (topText) topText.style.display = 'none';
+                    if (inputRow) inputRow.style.display = 'none';
+                    if (bottomText) bottomText.style.display = 'none';
+                    
+                    // Remove fade-out class and fade in thank you message
+                    emailFormBox.classList.remove('fade-out');
+                    if (thankYouMessage) {
+                        thankYouMessage.classList.add('active');
+                    }
+                    
+                    // Log submission
+                    console.log('Email submitted:', email);
+                    
+                }, 500);
+            });
+        }
+        
+        // Button hover effect
+        if (submitButton && submitImage) {
+            submitButton.addEventListener('mouseenter', function() {
+                if (submitImage.src.includes('Eric-Chuan-Send.png')) {
+                    submitImage.src = sentButtonImage;
+                }
+            });
+            
+            submitButton.addEventListener('mouseleave', function() {
+                if (!submitImage.src.includes('Eric-Chuan-Sent.png')) {
+                    submitImage.src = sendButtonImage;
+                }
+            });
+        }
+        
+        // PDF link hover effect
+        if (pdfLink && pdfImage) {
+            pdfLink.addEventListener('mouseenter', function() {
+                pdfImage.src = pdfImageHover;
+            });
+            
+            pdfLink.addEventListener('mouseleave', function() {
+                pdfImage.src = pdfImageNormal;
+            });
+        }
+        
+        // Form hover effect
+        if (stickyForm) {
+            stickyForm.addEventListener('mouseenter', function() {
+                this.style.opacity = '1';
+            });
+            
+            stickyForm.addEventListener('mouseleave', function() {
+                if (!thankYouMessage || thankYouMessage.style.display === 'none') {
+                    this.style.opacity = '0.3';
+                }
+            });
+        }
+
+        // Show sticky form with content
+        setTimeout(() => {
+            if (stickyForm) stickyForm.classList.add('visible');
+        }, 13500);
+        
+
+    });
+
+    function reloadWithAnimation() {
+        window.location.href = '/';
+    }
+    // Add to your existing JavaScript (around line 992-995)
+// Replace the existing QR code visibility timeout code with:
+
+setTimeout(() => {
+    const qr = document.querySelector('.qr-code');
+    if (qr) {
+        qr.classList.add('visible');
+        
+        // Add click toggle for mobile
+        if (window.innerWidth <= 768) {
+            qr.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('enlarged');
+            });
+            
+            // Close enlarged QR when clicking elsewhere
+            document.addEventListener('click', function(e) {
+                if (!qr.contains(e.target) && qr.classList.contains('enlarged')) {
+                    qr.classList.remove('enlarged');
+                }
+            });
+        }
+    }
+}, 13000);
+</script>
+</body>
+</html>

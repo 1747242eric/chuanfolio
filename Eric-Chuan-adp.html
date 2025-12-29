@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Chuan × ADP - Creative Direction</title>
+<meta name="description" content="Eric Chuan's creative direction and HR brand work for ADP.">
+<meta property="og:title" content="Eric Chuan × ADP">
+<meta property="og:description" content="Creative direction and HR brand work for ADP.">
+<link rel="shortcut icon" href="assets/favicon/Eric-Chuan-48epx.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/Eric-Chuan-720epx.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #000;
+            min-height: 200vh;
+        }
+        
+        /* ===== THIN WHITE STRIP - BASELINE FIXED ===== */
+        .scroll-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px; /* Increased for 5px margin */
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-end; /* Baseline at bottom */
+            padding: 5px 20px 5px 20px; /* 5px top margin built into padding */
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .scroll-header.visible { opacity: 1; transform: translateY(0); }
+        
+        .scroll-company {
+            font-size: 16px;
+            font-weight: 700;
+            margin-right: 50px;
+            line-height: 30px; /* Matches text height */
+        }
+        
+        .scroll-terms {
+            font-size: 7px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            line-height: 30px; /* Same baseline as company name */
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .cmyk-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85px;
+            height: 100px;
+            z-index: 10001;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .nav-item {
+            width: 42.5px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                        opacity 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .cmyk-nav:hover .nav-item:not(:hover) {
+            transform: scale(0.9);
+            opacity: 0.5;
+        }
+        
+        .nav-item:hover {
+            transform: scale(1);
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .nav-item:nth-child(1) { transform-origin: 85px 100px; }
+        .nav-item:nth-child(2) { transform-origin: 0px 100px; }
+        .nav-item:nth-child(3) { transform-origin: 85px 0px; }
+        .nav-item:nth-child(4) { transform-origin: 0px 0px; }
+        
+        /* ===== ARROWS - 42.5px × 50px ===== */
+        .arrows-nav {
+            position: fixed;
+            top: 104px;
+            right: 0;
+            width: 85px;
+            height: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            z-index: 10001;
+        }
+        
+        .nav-arrow {
+            width: 42.5px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .arrow-off, .arrow-on {
+            position: absolute;
+            width: 42.5px;
+            height: 50px;
+            object-fit: contain;
+            transition: opacity 0.3s;
+        }
+        
+        .arrow-off { opacity: 1; }
+        .arrow-on { opacity: 0; }
+        
+        .nav-arrow:hover .arrow-off { opacity: 0; }
+        .nav-arrow:hover .arrow-on { opacity: 1; }
+        
+        /* ===== PAGE LAYOUT ===== */
+        .main-content {
+            padding: 20px;
+            padding-top: 180px;
+        }
+        
+        /* Eyebrow - matches company name width */
+        .eyebrow {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 35px;
+            background: #000;
+        }
+        
+        /* Company Name */
+        .company-name {
+            position: absolute;
+            top: 75px;
+            left: 20px;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+        }
+        
+        /* Content Blocks - BASELINE WITH EYEBROW, 100px FROM NAME END */
+        .content-blocks {
+            position: absolute;
+            top: 35px; /* Eyebrow baseline */
+            max-width: 400px;
+        }
+        
+        .terms-paragraph {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #000;
+            margin-bottom: 12px;
+            line-height: 2;
+        }
+        
+        .term-unit {
+            display: inline-block;
+            margin-right: 1em;
+            white-space: nowrap;
+        }
+        
+        .description {
+            font-size: 10px;
+            line-height: 1.7;
+            font-weight: 300;
+            color: #333;
+            max-width: 400px;
+        }
+        
+        /* ===== PHOTOS FULL BLEED ===== */
+        .photo-section {
+            margin-top: 100px;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            left: 0;
+            position: relative;
+        }
+        
+        .photo-grid {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .photo-item {
+            width: 100%;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Portrait Pairs - PREMADE SAME HEIGHT */
+        .portrait-pair {
+            display: flex;
+            width: 100%;
+        }
+        
+        .portrait-pair .photo-item {
+            flex: 1;
+        }
+        
+        /* Example: 400×200 and 600×200 premade photos */
+        .portrait-pair.same-height .photo-item:first-child {
+            flex: 4; /* 40% */
+        }
+        
+        .portrait-pair.same-height .photo-item:last-child {
+            flex: 6; /* 60% */
+        }
+        
+        /* Mobile - COMPACT FIX */
+@media (max-width: 768px) {
+    /* Eyebrow - flush to edges, 30px height */
+    .eyebrow {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 40px !important;
+        background: #000;
+        margin-bottom: 0;
+    }
+    /* Fix for scroll header terms - wrap into two lines */
+    .scroll-header {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 40px;
+        padding: 5px 10px;
+    }
+    
+    .scroll-company {
+        font-size: 14px;
+        margin-right: 20px;
+        line-height: 20px;
+        margin-bottom: 2px;
+    }
+    
+    .scroll-terms {
+        font-size: 6px;
+        line-height: 1.4;
+        white-space: normal;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .scroll-terms span {
+        margin-right: 0.8em;
+        margin-bottom: 2px;
+        white-space: nowrap;
+    }
+    /* Content blocks - make visible */
+    .content-blocks {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+        margin-bottom: 20px;
+        display: block !important;
+    }
+    
+    /* Company name - closer to eyebrow */
+    .company-name { 
+        position: relative !important;
+        font-size: 24px; 
+        margin: 5px 0 15px 0 !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+    
+    /* Show mobile nav - smaller, stacked icons */
+    .cmyk-nav, .arrows-nav {
+        display: block !important;
+        position: fixed;
+        right: 0px;
+        width: 35px;
+    }
+    
+    .cmyk-nav {
+        top: 0px;
+        height: auto;
+    }
+    
+    .arrows-nav {
+        top: calc(0px + 140px + 2px);
+        height: 70px;
+    }
+    
+    /* Stack nav items vertically, smaller */
+    .nav-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0;
+    }
+    
+    .nav-item {
+        width: 35px;
+        height: 35px;
+        background-size: contain;
+    }
+    
+    /* Stack arrows vertically, smaller */
+    .arrows-nav {
+        display: flex !important;
+        flex-direction: column;
+        height: 70px;
+    }
+    
+    .nav-arrow {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Smaller arrow images */
+    .arrow-off, .arrow-on {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Adjust main content for compact layout */
+    .main-content { 
+        padding: 15px; 
+        padding-top: 80px; 
+    }
+    .photo-section {
+        margin-top: 55px !important; /* Change from 200px to 55px */
+    }
+    /* Keep the rest as is */
+    .terms-paragraph { font-size: 7px; }
+    .description { font-size: 9px; line-height: 1.6; }
+    .portrait-pair { flex-direction: column; }
+    .portrait-pair .photo-item { width: 100% !important; }
+
+    /* Disable hover, enable touch on mobile */
+    .cmyk-nav:hover .nav-item:not(:hover),
+    .nav-item:hover {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .nav-arrow:hover .arrow-off { opacity: 1 !important; }
+    .nav-arrow:hover .arrow-on { opacity: 0 !important; }
+
+    .nav-item:active {
+        transform: scale(0.9) !important;
+        opacity: 0.7 !important;
+    }
+
+    .nav-arrow:active .arrow-off { opacity: 0 !important; }
+    .nav-arrow:active .arrow-on { opacity: 1 !important; }
+    }
+    </style>
+</head>
+<body>
+    <!-- Thin White Strip - BASELINE ALIGNED -->
+    <div class="scroll-header" id="scrollHeader">
+        <div class="scroll-company">ADP</div>
+        <div class="scroll-terms">
+            <span>/ Finance</span>
+            <span>/ Rebrand + Design</span>
+            <span>/ Agency: <em style="text-transform: none; font-style: italic;">Carpenter Group</em></span>
+            <span>/ 2014</span>
+            <span>/ Digital + Print</span>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="cmyk-nav">
+        <nav class="nav-grid">
+            <a href="index.html" class="nav-item folio" title="Folio" style="background-image: url('assets/nav/folio.png')"></a>
+            <a href="Eric-Chuan-Bio.html" class="nav-item bio" title="Bio/CV" style="background-image: url('assets/nav/bio.png')"></a>
+            <a href="https://linkedin.com/in/ericchuan" target="_blank" class="nav-item linkedin" title="LinkedIn" style="background-image: url('assets/nav/linkedin.png')"></a>
+            <a href="mailto:1747242eric@gmail.com" class="nav-item email" title="Email" style="background-image: url('assets/nav/email.png')"></a>
+        </nav>
+    </div>
+    
+    <!-- Arrows -->
+    <div class="arrows-nav">
+        <a href="#" onclick="history.back(); return false;" class="nav-arrow" title="Previous">
+            <img src="assets/nav/arrowLoff.png" alt="Previous" class="arrow-off">
+            <img src="assets/nav/arrowLon.png" alt="Previous" class="arrow-on">
+        </a>
+        <a href="Eric-Chuan-cnet.html" class="nav-arrow" title="Next project">
+            <img src="assets/nav/arrowRoff.png" alt="Next" class="arrow-off">
+            <img src="assets/nav/arrowRon.png" alt="Next" class="arrow-on">
+        </a>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+       <div class="main-content">
+        <div class="eyebrow" id="eyebrow"></div>
+        <h1 class="company-name" id="companyName">
+         
+         
+       ADP<br>
+  <small style="font-size: 0.68em; line-height: 0.9; margin-top: 5px; display: block;">Automatic Data <br>Processing, Inc.
+  </small>
+</h1>
+        
+        <!-- JavaScript will fill this automatically -->
+        <div class="content-blocks" id="contentBlocks">
+            <div class="terms-paragraph">
+               
+            </div>
+            
+            <div class="description">
+                <p>Designed a contemporary visual system for the historic ADP brand, balancing its legacy with a clean, minimalist aesthetic suited for this century. The approach emphasized clarity, precision, and restraint—modernizing the look and feel while respecting the brand’s scale, trust, and longevity.</p>> </div>
+        </div>
+        
+        <!-- Photos -->
+        <!-- Photos -->
+<div class="photo-section">
+    <div class="photo-grid">
+        <div class="photo-item">
+            <img src="assets/companies/adp/Eric-Chuan-adp01.jpg" alt="ADP">
+        </div>
+        <!-- Portrait Pair - ONLY TWO IMAGES -->
+        <div class="portrait-pair same-height">
+            <div class="photo-item">
+                <img src="assets/companies/adp/Eric-Chuan-adp02.jpg" alt="ADP">
+            </div>
+            <div class="photo-item">
+                <img src="assets/companies/adp/Eric-Chuan-adp03.jpg" alt="ADP">
+            </div>
+        </div> <!-- END OF PAIR -->
+        
+        <div class="photo-item">
+            <img src="assets/companies/adp/Eric-Chuan-adp04.jpg" alt="ADP">
+        </div>
+         <div class="photo-item">
+            <img src="assets/companies/adp/Eric-Chuan-adp05.jpg" alt="ADP">
+        </div>
+        
+    </div>
+</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollHeader = document.getElementById('scrollHeader');
+            const eyebrow = document.getElementById('eyebrow');
+            const companyName = document.getElementById('companyName');
+            const contentBlocks = document.getElementById('contentBlocks');
+            
+            // Set eyebrow width to match company name
+            function updateLayout() {
+                if (eyebrow && companyName) {
+                    eyebrow.style.width = companyName.offsetWidth + 'px';
+                }
+                
+                // Position content 100px from end of name
+                if (contentBlocks && companyName) {
+                    const nameRect = companyName.getBoundingClientRect();
+                    contentBlocks.style.left = (nameRect.right + 100) + 'px';
+                }
+                // Skip on mobile
+                if (window.innerWidth <= 768) return;
+            
+            }
+            
+            updateLayout();
+            window.addEventListener('resize', updateLayout);
+            
+                        // Scroll header
+            window.addEventListener('scroll', function() {
+                scrollHeader.classList.toggle('visible', window.scrollY > 100);
+            });
+            
+            // ===== ADD PHOTO PAIRING FIX HERE =====
+            function fixPhotoPairs() {
+                const pairs = document.querySelectorAll('.portrait-pair.same-height');
+                
+                pairs.forEach(pair => {
+                    const imgs = pair.querySelectorAll('img');
+                    if (imgs.length !== 2) return;
+                    
+                    const width1 = imgs[0].naturalWidth;
+                    const width2 = imgs[1].naturalWidth;
+                    
+                    if (width1 === 0 || width2 === 0) {
+                        imgs[0].addEventListener('load', fixPhotoPairs);
+                        imgs[1].addEventListener('load', fixPhotoPairs);
+                        return;
+                    }
+                    
+                    imgs[0].parentElement.style.flex = width1;
+                    imgs[1].parentElement.style.flex = width2;
+                });
+            }
+            
+            fixPhotoPairs();
+            // ===== END PHOTO PAIRING FIX =====
+            
+        });
+    // Copy scroll terms to content area - only run once on load
+    function syncTerms() {
+    const scrollTerms = document.querySelector('.scroll-terms');
+    const contentTerms = document.querySelector('.terms-paragraph');
+    
+    if (scrollTerms && contentTerms) {
+        // Copy the HTML from scroll header to content area
+        contentTerms.innerHTML = scrollTerms.innerHTML;
+        
+        // Add term-unit class to all spans in content area
+        const termSpans = contentTerms.querySelectorAll('span');
+        termSpans.forEach(span => {
+            span.classList.add('term-unit');
+        });
+    }
+}
+    </script>
+        <script>
+    let redirectScheduled = false;
+
+    function checkBottomAndScheduleRedirect() {
+        // Check if we're at the bottom (within 1px tolerance)
+        const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 1;
+        
+        if (isAtBottom && !redirectScheduled) {
+            redirectScheduled = true;
+            
+            // Schedule redirect in 4 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 4000);
+        }
+    }
+
+    // Listen to scroll events
+    window.addEventListener('scroll', checkBottomAndScheduleRedirect);
+    
+    // Also check on load in case page is shorter than viewport
+    window.addEventListener('load', checkBottomAndScheduleRedirect);
+</script>
+
+</body>
+</html>
