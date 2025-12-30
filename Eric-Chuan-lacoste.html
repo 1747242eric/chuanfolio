@@ -595,6 +595,13 @@
     
     // Also check on load in case page is shorter than viewport
     window.addEventListener('load', checkBottomAndScheduleRedirect);
+    // Show header immediately on company pages
+setTimeout(() => {
+    const scrollHeader = document.querySelector('.scroll-header');
+    if (scrollHeader) {
+        scrollHeader.classList.add('visible');
+    }
+}, 100);
 </script>
 
 </body>
