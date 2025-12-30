@@ -595,13 +595,18 @@
     
     // Also check on load in case page is shorter than viewport
     window.addEventListener('load', checkBottomAndScheduleRedirect);
-    // Show header immediately on company pages
-setTimeout(() => {
-    const scrollHeader = document.querySelector('.scroll-header');
-    if (scrollHeader) {
-        scrollHeader.classList.add('visible');
+   setTimeout(() => {
+    const nav = document.querySelector('.cmyk-nav');
+    console.log('DEBUG - Nav element:', nav);
+    if (nav) {
+        console.log('Computed styles:', {
+            display: getComputedStyle(nav).display,
+            visibility: getComputedStyle(nav).visibility,
+            opacity: getComputedStyle(nav).opacity,
+            height: nav.offsetHeight
+        });
     }
-}, 100);
+}, 1000);
 </script>
 
 </body>
