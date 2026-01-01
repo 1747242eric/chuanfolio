@@ -64,7 +64,7 @@
             line-height: 1;
             color: #000;
             z-index: 10002;
-            background: #fff;
+            background: transparent;
             padding-right: 1px;
             /* PERFECT ALIGNMENT: bar ends exactly at name start */
         }
@@ -593,7 +593,16 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            
+             .background-video {
+                width: auto; /* Let width adjust based on height */
+                min-width: 100vw; /* Ensure it covers at least full width */
+                height: 100vh; /* Fit to screen height */
+                object-fit: cover; /* Crop to fit, maintain proportion */
+                position: fixed;
+                top: 0;
+                left: 50%; /* Center horizontally */
+                transform: translateX(-50%); /* Center horizontally */
+            }
             .column-wrapper {
                 height: auto;
                 padding-top: 0 !important;
