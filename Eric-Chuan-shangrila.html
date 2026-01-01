@@ -100,7 +100,40 @@
         .nav-item:nth-child(3) { transform-origin: 85px 0px; }
         .nav-item:nth-child(4) { transform-origin: 0px 0px; }
         
-       
+       /* ===== ARROWS - 42.5px × 50px ===== */
+        .arrows-nav {
+            position: fixed;
+            top: 104px;
+            right: 0;
+            width: 85px;
+            height: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            z-index: 10001;
+        }
+        
+        .nav-arrow {
+            width: 42.5px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .arrow-off, .arrow-on {
+            position: absolute;
+            width: 42.5px;
+            height: 50px;
+            object-fit: contain;
+            transition: opacity 0.3s;
+        }
+        
+        .arrow-off { opacity: 1; }
+        .arrow-on { opacity: 0; }
+        
+        .nav-arrow:hover .arrow-off { opacity: 0; }
+        .nav-arrow:hover .arrow-on { opacity: 1; }
         
         /* ===== PAGE LAYOUT ===== */
         .main-content {
