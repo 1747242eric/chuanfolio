@@ -209,8 +209,17 @@
         
         .photo-item {
             width: 100%;
+        margin: 0;
+    padding: 0;
+    line-height: 0; /* Prevents inline-block spacing */
         }
-        
+        .photo-item video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
         .photo-item img {
             width: 100%;
             height: auto;
@@ -298,7 +307,15 @@
         left: 0 !important;
         top: 0 !important;
     }
-    
+    .full-width-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom; /* Important: removes baseline gap */
+    object-fit: cover; /* Ensures no letterboxing */
+}
     /* Show mobile nav - smaller, stacked icons */
     .cmyk-nav, .arrows-nav {
         display: block !important;
@@ -438,7 +455,11 @@
             <img src="assets/companies/cnet/Eric-Chuan-cnet01.jpg" alt="CNET">
         </div>
         <div class="photo-item">
-            <img src="assets/companies/cnet/Eric-Chuan-cnet02.gif" alt="CNET">
+         <video class="full-width-video" autoplay muted loop playsinline>
+        <source src="assets/companies/cnet/Eric-Chuan-cnet02.mp4" type="video/mp4">
+        <!-- Fallback for browsers that don't support MP4 -->
+        Your browser does not support the video tag.
+        </video>
         </div>
          <!-- Portrait Pair - ONLY TWO IMAGES -->
         <div class="portrait-pair same-height">
