@@ -27,15 +27,16 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 40px; /* Increased for 5px margin */
+            height: 35px; /* Increased for 5px margin */
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.1);
             display: flex;
             align-items: flex-end; /* Baseline at bottom */
-            padding: 5px 20px 5px 20px; /* 5px top margin built into padding */
+            padding: 5px 20px 0 20px; /* 5px top margin built into padding */
             z-index: 9999;
             opacity: 0;
+            margin-bottom: 0;
             transform: translateY(-100%);
             transition: opacity 0.3s, transform 0.3s;
         }
@@ -45,16 +46,20 @@
         .scroll-company {
             font-size: 16px;
             font-weight: 700;
-            margin-right: 50px;
-            line-height: 30px; /* Matches text height */
+            margin-right: 50px; margin-top: 5px; 
+            padding-top: 15px;
+            align-items: baseline;
+            line-height: 1; /* Matches text height */
         }
         
         .scroll-terms {
             font-size: 7px;
             font-weight: 800;
+            align-items: baseline;
+            margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            line-height: 30px; /* Same baseline as company name */
+            line-height: 1; /* Same baseline as company name */
         }
         
         /* ===== NAVIGATION ===== */
@@ -355,6 +360,11 @@
     .photo-section {
         margin-top: 55px !important; /* Change from 200px to 55px */
     }
+    .photo-item iframe {
+    height: 450px !important; /* Instead of 900px/1000px */
+    display: flex;
+    align-items: center;
+}
     /* Keep the rest as is */
     .terms-paragraph { font-size: 7px; }
     .description { font-size: 9px; line-height: 1.6; }
@@ -585,7 +595,7 @@ syncTerms();
             // Schedule redirect in 4 seconds
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 4000);
+            }, 12000);
         }
     }
 
