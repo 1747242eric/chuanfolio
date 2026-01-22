@@ -199,7 +199,13 @@
             left: 0;
             position: relative;
         }
-        
+        .full-width-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
         .photo-grid {
             display: flex;
             flex-direction: column;
@@ -215,7 +221,16 @@
             height: auto;
             display: block;
         }
-        
+        .photo-item video {
+    display: block;
+    vertical-align: top;
+    line-height: 0;
+}
+
+/* Ensure photo-item containing video has proper spacing */
+.photo-item {
+    line-height: 0;
+}
         /* Portrait Pairs - PREMADE SAME HEIGHT */
         .portrait-pair {
             display: flex;
@@ -436,7 +451,11 @@
 <div class="photo-section">
     <div class="photo-grid">
         <div class="photo-item">
-            <img src="assets/companies/morgan/Eric-Chuan-morgan01.gif" alt="Morgan Stanley">
+         <video class="full-width-video" autoplay muted loop playsinline>
+        <source src="assets/companies/morgan/Eric-Chuan-morgan01.mp4" type="video/mp4">
+        <!-- Fallback for browsers that don't support MP4 -->
+        Your browser does not support the video tag.
+        </video>
         </div>
         <div class="photo-item">
             <img src="assets/companies/morgan/Eric-Chuan-morgan02.jpg" alt="Morgan Stanley">
@@ -450,9 +469,12 @@
          <div class="photo-item">
             <img src="assets/companies/morgan/Eric-Chuan-morgan05.jpg" alt="Morgan Stanley">
         </div>
-        
         <div class="photo-item">
-            <img src="assets/companies/morgan/Eric-Chuan-morgan06.gif" alt="Morgan Stanley">
+         <video class="full-width-video" autoplay muted loop playsinline>
+        <source src="assets/companies/morgan/Eric-Chuan-morgan01.mp4" type="video/mp4">
+        <!-- Fallback for browsers that don't support MP4 -->
+        Your browser does not support the video tag.
+        </video>
         </div>
     </div>
 </div>
@@ -547,7 +569,7 @@ syncTerms();
             // Schedule redirect in 4 seconds
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 4000);
+            }, 12000);
         }
     }
 
