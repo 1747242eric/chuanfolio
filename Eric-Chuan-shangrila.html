@@ -360,7 +360,11 @@
     .description { font-size: 9px; line-height: 1.6; }
     .portrait-pair { flex-direction: column; }
     .portrait-pair .photo-item { width: 100% !important; }
-
+      .photo-item iframe {
+    height: 400px !important; /* Instead of 900px/1000px */
+    display: flex;
+    align-items: center;
+}
     /* Disable hover, enable touch on mobile */
     .cmyk-nav:hover .nav-item:not(:hover),
     .nav-item:hover {
